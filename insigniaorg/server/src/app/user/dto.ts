@@ -1,7 +1,7 @@
 export class CreateUserDto {
-  email?: string;
-  password?: string;
-  name?: string;
+  email!: string;
+  password!: string;
+  name!: string;
   workspaceId?: string;
 }
 
