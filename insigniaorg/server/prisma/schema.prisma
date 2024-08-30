@@ -12,3 +12,84 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id            String     @id @default(uuid())
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  lastActivityAt DateTime?
+  email         String     @unique
+  emailVerified DateTime?
+  name          String?
+  password      String
+  workspaceId   String
+  workspace     Workspace  @relation(fields: [workspaceId], references: [id])
+  role          UserRoleEnum
+  session       Session[]
+  account       Account[]
+  apiToken      ApiToken[]
+}
+
+model Contact {
+  id            String      @id @default(uuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  workspaceId   String
+  name          String
+  phoneNumber   String?
+  email         String      @unique
+  address       String?
+
+  contactList   ContactList[]
+}
+
+model ContactList {
+  id             String      @id @default(uuid())
+  contactGroupId String
+  contactId      String
+  contactGroup   ContactGroup @relation(fields: [contactGroupId], references: [id])
+  contact        Contact      @relation(fields: [contactId], references: [id])
+}
+
+model ContactGroup {
+  id          String      @id @default(uuid())
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  name        String
+  description String?
+
+  contactList ContactList[]
+}
+
+enum UserRoleEnum {
+  ADMIN
+  USER
+  GUEST
+}
+
+// Concern on the Workspace, Session, Account and ApiToken column in User
+
+model Workspace {
+  id        String   @id @default(uuid())
+  name      String
+  // Define other fields related to Workspace
+  user      User[]
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Account {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model ApiToken {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+}

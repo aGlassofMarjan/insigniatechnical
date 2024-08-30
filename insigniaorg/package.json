@@ -2,7 +2,9 @@
   "name": "@insigniaorg/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "seed": "ts-node server/src/app/prisma/seed.ts"
+  },
   "private": true,
   "devDependencies": {
     "@nestjs/schematics": "^10.0.1",
@@ -33,7 +35,7 @@
     "prettier": "^2.6.2",
     "prisma": "^5.19.0",
     "ts-jest": "^29.1.0",
-    "ts-node": "10.9.1",
+    "ts-node": "^10.9.1",
     "typescript": "~5.5.2",
     "webpack-cli": "^5.1.4"
   },
