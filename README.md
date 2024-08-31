@@ -159,6 +159,8 @@ Delete a contact from a group
   DELETE /api/contact-groups/${groupId}/contacts/${contactId}
 ```
 
+[Back to Top](#insignia-technical-test)
+
 # Frontend Submission
 ## Run Project
 
