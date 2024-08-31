@@ -158,3 +158,24 @@ Delete a contact from a group
 ```http
   DELETE /api/contact-groups/${groupId}/contacts/${contactId}
 ```
+
+# Frontend Submission
+## Run Project
+
+To run this project, go to folder `client`
+
+```bash
+  cd client
+  npm run dev
+```
+
+## Features
+
+- NestJS with Typescript
+- PrismaORM
+- PostgreSQL
+- JWT Authentication
+- Passport.js
+- bcrypt.js
+- ESLint
+- Pagination
