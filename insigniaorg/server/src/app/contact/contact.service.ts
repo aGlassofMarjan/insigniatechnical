@@ -9,7 +9,7 @@ export class ContactService {
   async getAllContacts(page: number, pageSize: number, name?: string) {
     return this.prisma.contact.findMany({
       skip: (page - 1) * pageSize,
-      take: pageSize,
+      take: Number(pageSize),
       where: name ? { name: { contains: name, mode: 'insensitive' } } : {},
     });
   }
