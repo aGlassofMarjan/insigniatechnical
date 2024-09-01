@@ -208,6 +208,12 @@ To run this project, go to folder `client`
   npm run dev
 ```
 
+Deployment at: 
+
+```bash
+  https://insigniatechnical.vercel.app/
+```
+
 ## Features
 
 - NextJS with Typescript
