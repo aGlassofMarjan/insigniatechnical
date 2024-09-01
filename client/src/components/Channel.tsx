@@ -45,7 +45,7 @@ const Channel = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-3 gap-3 max-h-[100vh] overflow-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-3 gap-3 lg:max-h-[100vh] max-h-[50vh] overflow-auto">
         {channels?.map((channel, index) => (
           <div key={index} className="bg-accent rounded-md w-28 min-h-32 flex relative justify-between p-2 flex-col space-y-2 items-start">
             <Image src={channel.image} alt={`${channel.name} logo`} width={100} height={100} />
