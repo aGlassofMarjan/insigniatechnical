@@ -34,7 +34,7 @@ const Activity = () => {
   return (
     <>
       <div className="mt-8 lg:mt-0 ">
-        <div className="w-full flex justify-between mb-4">
+        <div className="w-full flex justify-between items-center mb-4">
           <p className="text-2xl font-semibold">Activity</p>
           <div role="button" className="flex gap-1 hover:text-primary">
             <p>View Timeline </p>

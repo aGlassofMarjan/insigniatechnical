@@ -81,7 +81,7 @@ const CardVideo = () => {
           </div>
         </div>
         <div className="flex">
-          <div className="carousel carousel-center space-x-4 p-4">
+          <div className="carousel space-x-4 p-4">
             {recipes.map((recipe, index) => (
               <div className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${recipe.image})` }}>
@@ -95,11 +95,11 @@ const CardVideo = () => {
                 </div>
               </div>
             ))}
-            <div className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 bg-cover bg-center bg-no-repeat "
+            <div role='button' className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 bg-cover bg-center bg-no-repeat "
               style={{ backgroundImage: `url(https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)` }}>
               <div className="block w-full p-4 rounded-b-md bg-primary-content text-white">
-                <div className='flex w-full justify-center gap-2'>
-                  <CirclePlus width={44} height={44} strokeWidth={1} />
+                <div className='flex w-full justify-start gap-2'>
+                  <CirclePlus width={40} height={40} strokeWidth={1} />
                   <p className='text-sm'>Upload <br /> Your Own Video</p>
                 </div>
               </div>
