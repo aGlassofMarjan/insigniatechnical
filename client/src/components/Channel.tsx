@@ -47,9 +47,9 @@ const Channel = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-3 gap-3 lg:max-h-[100vh] max-h-[50vh] overflow-auto">
         {channels?.map((channel, index) => (
-          <div key={index} className="bg-accent rounded-md w-28 min-h-32 flex relative justify-between p-2 flex-col space-y-2 items-start">
+          <div key={index} className="bg-neutral rounded-md w-auto min-h-32 flex relative justify-between p-2 flex-col space-y-2 md:items-start items-center">
             <Image src={channel.image} alt={`${channel.name} logo`} width={100} height={100} />
-            <p className="text-accent-content">{channel.name}</p>
+            <p className="text-neutral-content">{channel.name}</p>
           </div>
         ))}
       </div>

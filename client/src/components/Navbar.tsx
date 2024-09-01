@@ -1,6 +1,6 @@
 "use client"
 
-import { Building2, Calendar, Heart, Menu, Rss, Users, Video, X, File, Search } from "lucide-react";
+import { Building2, Calendar, Heart, Menu, Rss, Users, Video, X, File, Search, Upload } from "lucide-react";
 
 const Navbar = () => {
   return (
@@ -49,6 +49,9 @@ const Navbar = () => {
               <Search strokeWidth={1} />
             </label>
           </div>
+          <button className="btn btn-accent font-sans">
+            <Upload strokeWidth={1.5} /> Upload
+          </button>
           <div className="lg:dropdown lg:dropdown-end hidden">
             <div tabIndex={0} role="button" className="btn btn-ghost avatar">
               <div className="w-10 rounded">
@@ -70,7 +73,10 @@ const Navbar = () => {
               <li><a>Logout</a></li>
             </ul>
           </div>
-          <div className="lg:hidden flex-1">
+          <div className="lg:hidden flex items-center">
+            <button className="btn bg-transparent outline-transparent border-transparent">
+              <Upload />
+            </button>
             <button
               className="rounded-md text-white"
               onClick={() => (document.getElementById('profile') as HTMLDialogElement).showModal()}

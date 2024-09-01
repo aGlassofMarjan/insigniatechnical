@@ -58,7 +58,7 @@ const CardDocument = () => {
               >
                 <div className="text-white block w-full rounded-b-md bg-primary-content p-4">
                   <p className="text-xl font-bold">{document.title}</p>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between mb-4">
                     <p className="flex items-center gap-2 text-sm mt-2"><ThumbsUp strokeWidth={1.5} height={16} width={16} /> {document.reactions.likes}, <ThumbsDown strokeWidth={1.5} height={16} width={16} /> {document.reactions.dislikes}</p>
                     <p className="flex items-center gap-2 text-sm"><Eye strokeWidth={1.5} height={16} width={16} /> {document.views}</p>
                   </div>
@@ -80,7 +80,7 @@ const CardDocument = () => {
               >
                 <div className="block w-full rounded-b-md bg-primary-content text-white p-4">
                   <p className="font-bold">{document.title}</p>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center mb-4">
                     <p className="flex items-center gap-2 text-sm mt-2"><ThumbsUp strokeWidth={1.5} height={16} width={16} /> {document.reactions.likes}, <ThumbsDown strokeWidth={1.5} height={16} width={16} /> {document.reactions.dislikes}</p>
                     <p className="flex items-center gap-2 text-sm"><Eye strokeWidth={1.5} height={16} width={16} /> {document.views}</p>
                   </div>
@@ -123,7 +123,7 @@ const CardDocument = () => {
               >
                 <div className="block w-full rounded-b-md bg-primary-content text-white">
                   <p className="font-bold">{document.title}</p>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between mb-4">
                     <p className="flex items-center gap-2 text-sm mt-2"><ThumbsUp strokeWidth={1.5} height={16} width={16} /> {document.reactions.likes}, <ThumbsDown strokeWidth={1.5} height={16} width={16} /> {document.reactions.dislikes}</p>
                     <p className="flex items-center gap-2 text-sm"><Eye strokeWidth={1.5} height={16} width={16} /> {document.views}</p>
                   </div>
