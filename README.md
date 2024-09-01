@@ -1,4 +1,3 @@
-
 # Insignia Technical Test
 
 My submission for Full Stack Developer position at Insignia
@@ -7,9 +6,8 @@ My submission for Full Stack Developer position at Insignia
 
 [Click here to go to Frontend](#frontend-submission)
 
-
-
 # Backend Submission
+
 ## Run Project
 
 To run this project, go to folder `insigniaorg`
@@ -30,21 +28,26 @@ To run this project, go to folder `insigniaorg`
 - ESLint
 - Pagination
 
-
 ## API Reference
 
 #### 1. GET Users
+
 Get all user with filters
+
 ```http
   GET /api/users?page=1&pageSize=10
 ```
 
 #### 1. POST Users
+
 Add new user to the list
+
 ```http
   GET /api/users
 ```
+
 Request Body
+
 ```json
 {
   "email": "user@example.com",
@@ -54,12 +57,17 @@ Request Body
   "workspaceId": "workspace-id"
 }
 ```
+
 #### 3. PATCH Users
+
 Edit existing user
+
 ```http
   PATCH /api/users/${userId}
 ```
+
 Request Body
+
 ```json
 {
   "email": "user.updated@example.com",
@@ -67,24 +75,33 @@ Request Body
   "name": "John Doe Updated"
 }
 ```
+
 #### 4. DELETE Users
+
 Remove existing user
+
 ```http
   DELETE /api/users/${userId}
 ```
 
 #### 5. GET Contacts
+
 Get all available contacts
+
 ```http
   GET /api/contacts?page=1&pageSize=10&name=John
 ```
 
 #### 6. POST Contacts
+
 Add new contact to the contact list
+
 ```http
   POST /api/products/
 ```
+
 Request Body:
+
 ```json
 {
   "name": "John Doe",
@@ -96,11 +113,15 @@ Request Body:
 ```
 
 #### 7. PATCH Contacts
+
 Add new contact to the contact list
+
 ```http
   PATCH /api/contacts/${contactId}
 ```
+
 Request Body:
+
 ```json
 {
   "name": "John Doe Updated",
@@ -108,13 +129,17 @@ Request Body:
   "phoneNumber": "+987654321"
 }
 ```
+
 #### 8. DELETE Contacts
+
 Remove a contact from the list
+
 ```http
   DELETE /api/contacts/${contactId}
 ```
 
 #### 9. GET Contact Groups
+
 Get all groups available on the list
 
 ```http
@@ -122,12 +147,15 @@ Get all groups available on the list
 ```
 
 #### 10. POST Contact Group
+
 Add new contact group
 
 ```http
   POST /api/contact-groups
 ```
+
 Request Body:
+
 ```json
 {
   "name": "Friends",
@@ -136,25 +164,33 @@ Request Body:
 ```
 
 #### 11. POST Contact to Group
+
 Add a contact to a group
 
 ```http
   POST /api/contact-groups/${groupId}/contacts
 ```
+
 Request Body:
+
 ```json
 {
   "contactId": "contact-id"
 }
 ```
+
 #### 12. GET Contact from a Group
+
 Get all contact from a group
 
 ```http
   GET api/contact-groups/${groupId}/contacts
 ```
+
 #### 13. DELETE Contact from a Group
+
 Delete a contact from a group
+
 ```http
   DELETE /api/contact-groups/${groupId}/contacts/${contactId}
 ```
@@ -162,6 +198,7 @@ Delete a contact from a group
 [Back to Top](#insignia-technical-test)
 
 # Frontend Submission
+
 ## Run Project
 
 To run this project, go to folder `client`
@@ -173,11 +210,10 @@ To run this project, go to folder `client`
 
 ## Features
 
-- NestJS with Typescript
-- PrismaORM
-- PostgreSQL
-- JWT Authentication
-- Passport.js
-- bcrypt.js
-- ESLint
-- Pagination
+- NextJS with Typescript
+- TailwindCSS and DaisyUI as the component library
+- Axios
+
+*Although I believe using Axios does not add much value over the built-in Fetch in Next.js, I'm using Axios merely for demonstration purposes.*
+
+**NOTE:** In this take-home project, I'm using [https://dummyjson.com/](https://dummyjson.com/) as the API, since [https://dummyapi.io/](https://dummyapi.io/) won't let me sign up for some reason.
