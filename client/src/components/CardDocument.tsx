@@ -19,6 +19,7 @@ type Document = {
 
 const CardDocument = () => {
   const [documents, setDocuments] = useState<Document[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchDocuments = async () => {
     try {
@@ -32,12 +33,23 @@ const CardDocument = () => {
 
   useEffect(() => {
     const getDocumentsData = async () => {
+      setLoading(true);
       const docs = await fetchDocuments();
       setDocuments(docs);
+      setLoading(false);
     };
 
     getDocumentsData();
   }, []);
+
+  if (loading) {
+    return (
+      <div className='w-full flex gap-2 justify-center items-center mb-4'>
+        <span className="loading loading-spinner loading-lg"></span>
+        <p>Loading documents...</p>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -117,42 +129,46 @@ const CardDocument = () => {
         <div className="flex">
           <div className="carousel space-x-4 p-4">
             {documents.map((document) => (
-              <div
-                key={document.id}
-                className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 p-4"
-              >
-                <div className="block w-full rounded-b-md bg-primary-content text-white">
-                  <p className="font-bold">{document.title}</p>
-                  <div className="flex justify-between mb-4">
-                    <p className="flex items-center gap-2 text-sm mt-2"><ThumbsUp strokeWidth={1.5} height={16} width={16} /> {document.reactions.likes}, <ThumbsDown strokeWidth={1.5} height={16} width={16} /> {document.reactions.dislikes}</p>
-                    <p className="flex items-center gap-2 text-sm"><Eye strokeWidth={1.5} height={16} width={16} /> {document.views}</p>
-                  </div>
-                  <div className="flex gap-1 mt-2">
-                    {document.tags.map((tag, idx) => (
-                      <span key={idx} className="text-xs text-neutral-content bg-accent px-2 py-1 rounded-md">
-                        #{tag}
-                      </span>
-                    ))}
+              <>
+                <div
+                  key={document.id}
+                  className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 p-4"
+                >
+                  <div className="block w-full rounded-b-md bg-primary-content text-white">
+                    <p className="font-bold">{document.title}</p>
+                    <div className="flex justify-between mb-4">
+                      <p className="flex items-center gap-2 text-sm mt-2"><ThumbsUp strokeWidth={1.5} height={16} width={16} /> {document.reactions.likes}, <ThumbsDown strokeWidth={1.5} height={16} width={16} /> {document.reactions.dislikes}</p>
+                      <p className="flex items-center gap-2 text-sm"><Eye strokeWidth={1.5} height={16} width={16} /> {document.views}</p>
+                    </div>
+                    <div className="flex gap-1 mt-2">
+                      {document.tags.map((tag, idx) => (
+                        <span key={idx} className="text-xs text-neutral-content bg-accent px-2 py-1 rounded-md">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+                <div
+                  role='button'
+                  className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 p-4"
+                >
+                  <div className="block w-full rounded-b-md bg-primary-content text-white">
+                    <div className='flex w-full justify-start gap-2'>
+                      <CirclePlus width={40} height={40} strokeWidth={1} />
+                      <p className='text-sm'>Share <br /> Your Document</p>
+                    </div>
+                  </div>
+                </div>
+              </>
+
             ))}
-            <div
-              role='button'
-              className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 p-4"
-            >
-              <div className="block w-full rounded-b-md bg-primary-content text-white">
-                <div className='flex w-full justify-start gap-2'>
-                  <CirclePlus width={40} height={40} strokeWidth={1} />
-                  <p className='text-sm'>Share <br /> Your Document</p>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default CardDocument;

@@ -49,11 +49,11 @@ const Navbar = () => {
               <Search strokeWidth={1} />
             </label>
           </div>
-          <button className="btn btn-accent font-sans">
+          <button className="hidden lg:btn lg:btn-accent lg:font-sans">
             <Upload strokeWidth={1.5} /> Upload
           </button>
           <div className="lg:dropdown lg:dropdown-end hidden">
-            <div tabIndex={0} role="button" className="btn btn-ghost avatar">
+            <div tabIndex={0} role="button" className="btn btn-ghost p-0 avatar">
               <div className="w-10 rounded">
                 <img
                   alt="Tailwind CSS Navbar component"

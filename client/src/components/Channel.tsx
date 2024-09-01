@@ -13,9 +13,11 @@ type Channel = {
 
 const Channel = () => {
   const [channels, setChannels] = useState<Channel[]>([]);
+  const [loading, setLoading] = useState(true); // Loading state
 
   const fetchLogos = async () => {
     try {
+      setLoading(true); // Start loading
       const companies = ["Microsoft", "Google", "HP", "Amazon", "Facebook", "Lenovo", "Asus", "Oracle", "Adobe", "LG", "Xiaomi", "Vivo", "Oppo", "Toyota", "Honda", "Yamaha", "Airbus", "Boeing", "Mercedes", "BMW"];
       const promises = companies.map(async (company) => {
         const response = await axios.get(`https://api.api-ninjas.com/v1/logo?name=${company}`, {
@@ -24,16 +26,26 @@ const Channel = () => {
         return response.data[0]; // Assuming the first item in the response array is what you need
       });
       const channelData = await Promise.all(promises);
-      console.log(channelData)
       setChannels(channelData);
     } catch (error) {
       console.error('Error fetching logos', error);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
   useEffect(() => {
     fetchLogos();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="w-full flex gap-2 justify-center items-center my-8">
+        <span className="loading loading-spinner loading-lg"></span>
+        <p>Loading channels...</p>
+      </div>
+    );
+  }
 
   return (
     <>

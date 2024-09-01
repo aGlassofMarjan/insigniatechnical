@@ -15,25 +15,38 @@ type Product = {
 
 const Activity = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           'https://dummyjson.com/products?limit=8&select=title,description,category,images,price&skip=5'
         );
         setProducts(response.data.products);
       } catch (error) {
         console.error("Error fetching the products:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProducts();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="w-full flex gap-2 justify-center items-center my-8">
+        <span className="loading loading-spinner loading-lg"></span>
+        <p>Loading activities...</p>
+      </div>
+    );
+  }
+
   return (
     <>
-      <div className="mt-8 lg:mt-0 ">
+      <div className="mt-8 lg:mt-0">
         <div className="w-full flex justify-between items-center mb-4">
           <p className="text-2xl font-semibold">Activity</p>
           <div role="button" className="flex gap-1 hover:text-primary">

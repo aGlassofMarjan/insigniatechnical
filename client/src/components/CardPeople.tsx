@@ -17,19 +17,42 @@ type People = {
 
 const CardPeople = () => {
   const [peoples, setPeoples] = useState<People[]>([]);
+  const [loading, setLoading] = useState(true); // Loading state
+  const [showWorkButton, setShowWorkButton] = useState(false);
 
   useEffect(() => {
     const fetchPeople = async () => {
       try {
+        setLoading(true);
         const response = await axios.get('https://dummyjson.com/users?limit=5&select=firstName,lastName,company,image');
         setPeoples(response.data.users);
       } catch (error) {
         console.error('Error fetching peoples', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchPeople();
+
+    // Timeout to ensure mapped card loaded before "Add" card
+    const timer = setTimeout(() => {
+      setShowWorkButton(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, []);
+
+  if (loading) {
+    return (
+      <>
+        <div className='w-full flex gap-2 justify-center items-center mb-4'>
+          <span className="loading loading-spinner loading-lg"></span>
+          <p>loading people..</p>
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
@@ -110,18 +133,21 @@ const CardPeople = () => {
                 </div>
               </div>
             ))}
-            <div
-              role='button'
-              className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)` }}
-            >
-              <div className="block w-full p-4 rounded-b-md bg-primary-content text-white">
-                <div className='flex w-full justify-start gap-2'>
-                  <CirclePlus width={40} height={40} strokeWidth={1} />
-                  <p className='text-sm'>Show <br /> Your Work</p>
+
+            {showWorkButton && (
+              <div
+                role='button'
+                className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)` }}
+              >
+                <div className="block w-full p-4 rounded-b-md bg-primary-content text-white">
+                  <div className='flex w-full justify-start gap-2'>
+                    <CirclePlus width={40} height={40} strokeWidth={1} />
+                    <p className='text-sm'>Show <br /> Your Work</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
