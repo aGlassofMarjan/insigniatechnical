@@ -55,7 +55,7 @@ const CardVideo = () => {
         {recipes.map((recipe, index) => {
           if (index === 0) {
             return (
-              <div key={index} className="col-span-4 row-span-2 bg-gray-600 rounded-md flex items-end shadow-md h-auto bg-cover bg-center bg-no-repeat"
+              <div key={index} className="col-span-4 row-span-2 bg-primary-content rounded-md flex items-end shadow-md h-auto bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${recipe.image})` }}>
                 <div className="text-white block w-full p-4 rounded-b-md bg-primary-content">
                   <p>{recipe.name}</p>
@@ -67,7 +67,7 @@ const CardVideo = () => {
             );
           } else {
             return (
-              <div key={index} className="col-span-2 bg-gray-600 rounded-md flex items-end shadow-md h-44 bg-cover bg-center bg-no-repeat"
+              <div key={index} className="col-span-2 bg-primary-content rounded-md flex items-end shadow-md h-44 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${recipe.image})` }}>
                 <div className="block w-full p-4 rounded-b-md bg-primary-content text-white">
                   <p>{recipe.name}</p>
