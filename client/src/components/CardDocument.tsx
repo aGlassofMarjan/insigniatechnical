@@ -20,6 +20,7 @@ type Document = {
 const CardDocument = () => {
   const [documents, setDocuments] = useState<Document[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showShareButton, setShowShareButton] = useState(false);
 
   const fetchDocuments = async () => {
     try {
@@ -37,6 +38,12 @@ const CardDocument = () => {
       const docs = await fetchDocuments();
       setDocuments(docs);
       setLoading(false);
+
+      const timer = setTimeout(() => {
+        setShowShareButton(true);
+      }, 500);
+
+      return () => clearTimeout(timer);
     };
 
     getDocumentsData();
@@ -109,12 +116,14 @@ const CardDocument = () => {
           }
         })}
 
-        <div className="col-span-2 bg-primary-content text-white flex rounded-md shadow-md items-center justify-center h-44">
-          <div className="flex gap-2">
-            <CirclePlus width={44} height={44} strokeWidth={1} />
-            <p>Share <br /> Your Document</p>
+        {showShareButton && (
+          <div className="col-span-2 bg-primary-content text-white flex rounded-md shadow-md items-center justify-center h-44">
+            <div className="flex gap-2">
+              <CirclePlus width={44} height={44} strokeWidth={1} />
+              <p>Share <br /> Your Document</p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Mobile */}
@@ -149,21 +158,23 @@ const CardDocument = () => {
                     </div>
                   </div>
                 </div>
-                <div
-                  role='button'
-                  className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 p-4"
-                >
-                  <div className="block w-full rounded-b-md bg-primary-content text-white">
-                    <div className='flex w-full justify-start gap-2'>
-                      <CirclePlus width={40} height={40} strokeWidth={1} />
-                      <p className='text-sm'>Share <br /> Your Document</p>
-                    </div>
-                  </div>
-                </div>
-              </>
 
+              </>
             ))}
 
+            {showShareButton && (
+              <div
+                role='button'
+                className="carousel-item items-end bg-primary-content rounded-md text-white w-80 h-60 p-4"
+              >
+                <div className="block w-full rounded-b-md bg-primary-content text-white">
+                  <div className='flex w-full justify-start gap-2'>
+                    <CirclePlus width={40} height={40} strokeWidth={1} />
+                    <p className='text-sm'>Share <br /> Your Document</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
