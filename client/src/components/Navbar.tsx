@@ -1,6 +1,6 @@
 "use client"
 
-import { Building2, Calendar, Heart, Menu, Rss, Users, Video, X, File, Search, Upload } from "lucide-react";
+import { Building2, Calendar, Heart, Menu, Rss, Users, Video, X, File, Search, Upload, LogOut, Shield, User, UserPen } from "lucide-react";
 
 const Navbar = () => {
   return (
@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="font-serif navbar justify-around bg-base-100">
         <div className="lg:hidden flex-1">
           <button
-            className="btn btn-accent rounded-md text-white"
+            className="btn btn-accent rounded-md"
             onClick={() => (document.getElementById('menu') as HTMLDialogElement).showModal()}
           >
             <Menu />
@@ -23,13 +23,13 @@ const Navbar = () => {
                 <h3 className="font-bold text-lg">Main Menu</h3>
                 <div className="divider"></div>
                 <ul className="menu w-full">
-                  <li><a>Videos</a></li>
-                  <li><a>Peoples</a></li>
-                  <li><a>Documents</a></li>
-                  <li><a>Events</a></li>
-                  <li><a>Communities</a></li>
-                  <li><a>Favourites</a></li>
-                  <li><a>Channels</a></li>
+                  <li><a><Video strokeWidth={1} /> Videos</a></li>
+                  <li><a><Users strokeWidth={1} />Peoples</a></li>
+                  <li><a><File strokeWidth={1} />Documents</a></li>
+                  <li><a><Calendar strokeWidth={1} />Events</a></li>
+                  <li><a><Building2 strokeWidth={1} />Communities</a></li>
+                  <li><a><Heart strokeWidth={1} />Favourites</a></li>
+                  <li><a><Rss strokeWidth={1} />Channels</a></li>
                 </ul>
 
               </div>
@@ -92,8 +92,20 @@ const Navbar = () => {
             </button>
             <dialog id="profile" className="modal">
               <div className="modal-box rounded-md">
-                <h3 className="font-bold text-lg">Hello!</h3>
-                <p className="py-4">Press ESC key or click outside to close</p>
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"><X /> </button>
+                </form>
+                <h3 className="font-bold text-lg">Hello Waseem!</h3>
+                <p className="py-4">Waseem Ahmad - UI/UX Designeer</p>
+                <ul className="menu w-full">
+                  <button className="btn btn-accent font-sans"><Upload strokeWidth={1.5} /> Start Upload</button>
+                  <div className="divider"></div>
+                  <li><a><User strokeWidth={1} /> My Profile</a></li>
+                  <li><a><UserPen strokeWidth={1} /> Edit Profile</a></li>
+                  <li><a><Shield strokeWidth={1} /> Security</a></li>
+                  <li><a><LogOut strokeWidth={1} /> Log out </a></li>
+                </ul>
               </div>
               <form method="dialog" className="modal-backdrop">
                 <button>close</button>

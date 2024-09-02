@@ -17,20 +17,20 @@ const Channel = () => {
 
   const fetchLogos = async () => {
     try {
-      setLoading(true); // Start loading
+      setLoading(true);
       const companies = ["Microsoft", "Google", "HP", "Amazon", "Facebook", "Lenovo", "Asus", "Oracle", "Adobe", "LG", "Xiaomi", "Vivo", "Oppo", "Toyota", "Honda", "Yamaha", "Airbus", "Boeing", "Mercedes", "BMW"];
       const promises = companies.map(async (company) => {
         const response = await axios.get(`https://api.api-ninjas.com/v1/logo?name=${company}`, {
           headers: { 'X-Api-Key': '49J7KXiimWLiJcI7q08glg==vt9PzZmfWmbDi8O3' },
         });
-        return response.data[0]; // Assuming the first item in the response array is what you need
+        return response.data[0];
       });
       const channelData = await Promise.all(promises);
       setChannels(channelData);
     } catch (error) {
       console.error('Error fetching logos', error);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
